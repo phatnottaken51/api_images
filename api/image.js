@@ -6,6 +6,16 @@ const targetApiUrl = 'http://fi4.bot-hosting.net:22869/api/image';
 module.exports = async (req, res) => {
     const { prompt } = req.query; // Lấy giá trị 'prompt' từ query string
 
+    // Thêm tiêu đề CORS
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+    // Xử lý yêu cầu OPTIONS (Preflight Request)
+    if (req.method === 'OPTIONS') {
+        return res.status(204).end(); // Trả về thành công mà không làm gì
+    }
+
     if (!prompt) {
         return res.status(400).json({ error: "Missing 'prompt' query parameter" });
     }
