@@ -7,9 +7,10 @@ module.exports = async (req, res) => {
     const { prompt } = req.query; // Lấy giá trị 'prompt' từ query string
 
     // Thêm tiêu đề CORS
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', 'https://phatnottaken.x10.mx');  // Hoặc '*' nếu bạn muốn cho phép tất cả các domain
     res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
 
     // Xử lý yêu cầu OPTIONS (Preflight Request)
     if (req.method === 'OPTIONS') {
